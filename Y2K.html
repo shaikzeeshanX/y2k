@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Starlight Net :: Welcome to the Future</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#1b1040;--pink:#ff6fd8;--cyan:#38e8ff;--lime:#c6ff3d;--violet:#8b5cf6;--chrome:linear-gradient(180deg,#ffffff 0%,#d9e4f5 45%,#8fa6c9 50%,#e9f1ff 100%)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;font-family:Verdana,Tahoma,"Trebuchet MS",sans-serif;color:var(--ink);
+  background:radial-gradient(circle at 20% 10%,#fff 0,transparent 25%),linear-gradient(135deg,#7ee8ff 0%,#c59bff 50%,#ff9ad5 100%);overflow-x:hidden;position:relative}
+/* floating bubbles */
+.bubble{position:fixed;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0,rgba(255,255,255,.2) 40%,rgba(56,232,255,.35) 70%,rgba(139,92,246,.4) 100%);
+  box-shadow:inset -4px -6px 12px rgba(255,255,255,.6),0 0 12px rgba(255,255,255,.4);animation:float 14s ease-in-out infinite;pointer-events:none;z-index:0}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-30px) translateX(12px)}}
+/* marquee */
+.marquee{background:var(--ink);color:var(--lime);font-weight:bold;font-size:14px;letter-spacing:2px;white-space:nowrap;overflow:hidden;padding:8px 0;border-bottom:3px double var(--pink);position:relative;z-index:2}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 18s linear infinite}
+@keyframes scroll{to{transform:translateX(-100%)}}
+/* header */
+header{position:relative;z-index:2;text-align:center;padding:36px 16px 20px}
+.logo{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(44px,9vw,96px);line-height:1;margin:0;letter-spacing:3px;
+  background:linear-gradient(180deg,#fff 0%,#ff9ad5 40%,#38e8ff 55%,#8b5cf6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(3px 3px 0 #1b1040) drop-shadow(0 0 16px #fff)}
+.tagline{display:inline-block;margin-top:10px;background:var(--chrome);border:2px solid var(--ink);border-radius:999px;padding:6px 18px;font-weight:bold;font-size:13px;box-shadow:0 3px 0 var(--ink)}
+/* sparkles */
+.sparkle{position:absolute;color:#fff;font-size:22px;text-shadow:0 0 8px var(--cyan);animation:twinkle 2.4s ease-in-out infinite;pointer-events:none}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.2) rotate(20deg)}}
+/* nav */
+nav{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:12px 16px 24px}
+nav a{text-decoration:none;color:var(--ink);font-weight:bold;font-size:14px;padding:10px 20px;border-radius:999px;border:2px solid var(--ink);
+  background:linear-gradient(180deg,#fff 0%,#bff3ff 48%,#5fd4ff 52%,#c9f7ff 100%);box-shadow:0 4px 0 var(--ink),inset 0 1px 0 #fff;transition:transform .1s}
+nav a:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--ink)}
+nav a:nth-child(2n){background:linear-gradient(180deg,#fff 0%,#ffd1f0 48%,#ff6fd8 52%,#ffe3f7 100%)}
+/* main grid */
+main{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;max-width:1080px;margin:0 auto;padding:0 16px 40px}
+/* windows */
+.window{background:#f4f8ff;border:3px outset #e7edff;border-radius:12px 12px 6px 6px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;position:relative}
+.titlebar{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;color:#fff;font-weight:bold;font-size:13px;
+  background:linear-gradient(90deg,#1e3a8a,#38e8ff);border-bottom:2px solid var(--ink)}
+.dots{display:flex;gap:5px}
+.dots i{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#ff6fd8 60%,#8b5cf6);border:1px solid var(--ink);display:block}
+.window .body{padding:18px 16px}
+.window h2{font-family:Impact,"Arial Black",sans-serif;font-weight:normal;font-size:26px;margin:0 0 8px;letter-spacing:1px;color:var(--violet)}
+.window p{font-size:14px;line-height:1.55;margin:0 0 10px}
+/* starburst badge */
+.burst{position:absolute;top:-10px;right:-10px;width:86px;height:86px;display:grid;place-items:center;text-align:center;font-weight:bold;font-size:12px;
+  background:var(--lime);color:var(--ink);clip-path:polygon(50% 0%,61% 12%,76% 6%,80% 21%,95% 24%,89% 38%,100% 50%,89% 62%,95% 76%,80% 79%,76% 94%,61% 88%,50% 100%,39% 88%,24% 94%,20% 79%,5% 76%,11% 62%,0% 50%,11% 38%,5% 24%,20% 21%,24% 6%,39% 12%);transform:rotate(12deg)}
+/* glossy button */
+.btn{display:inline-block;margin-top:6px;text-decoration:none;color:var(--ink);font-weight:bold;padding:9px 16px;border:2px solid var(--ink);border-radius:8px;
+  background:linear-gradient(180deg,#fff 0%,#ffe27a 50%,#ffb020 52%,#ffe9a8 100%);box-shadow:0 3px 0 var(--ink)}
+/* pixel star list */
+ul.stars{list-style:none;padding:0;margin:0}
+ul.stars li{font-size:14px;padding:6px 0 6px 26px;position:relative;border-bottom:1px dashed #b9a6ff}
+ul.stars li:before{content:"★";position:absolute;left:0;color:var(--pink);text-shadow:1px 1px 0 var(--ink)}
+/* rainbow divider */
+.rainbow{height:10px;margin:0 16px 24px;border:2px solid var(--ink);border-radius:999px;background:linear-gradient(90deg,#ff6fd8,#ffe27a,#c6ff3d,#38e8ff,#8b5cf6)}
+/* counter & footer */
+.counter{display:inline-flex;gap:3px;background:#000;border:3px inset #888;padding:4px 8px;font-family:"Courier New",monospace;font-weight:bold;color:var(--lime);font-size:20px;letter-spacing:2px}
+footer{position:relative;z-index:2;text-align:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom,0px));font-size:12px;background:var(--ink);color:#e9e2ff;border-top:4px double var(--cyan)}
+footer .badge{display:inline-block;margin:6px 4px;padding:4px 8px;border:2px solid var(--lime);color:var(--lime);font-weight:bold;font-size:11px}
+.gif-text{font-family:Impact,"Arial Black",sans-serif;color:var(--pink);text-shadow:2px 2px 0 var(--ink);font-size:18px;letter-spacing:2px;animation:blink 1.2s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bubble" style="width:120px;height:120px;top:8%;left:4%"></div>
+<div class="bubble" style="width:60px;height:60px;top:55%;left:88%;animation-delay:-4s"></div>
+<div class="bubble" style="width:180px;height:180px;top:70%;left:-40px;animation-delay:-8s"></div>
+<div class="bubble" style="width:90px;height:90px;top:20%;right:6%;animation-delay:-2s"></div>
+
+<div class="marquee"><span>★ WELCOME TO STARLIGHT NET ★ BEST VIEWED AT 1024x768 ★ NEW: PIXEL PETS BETA ★ SIGN MY GUESTBOOK ★ NO CARRIER ★</span></div>
+
+<header>
+  <div class="sparkle" style="top:18px;left:12%">✦</div>
+  <div class="sparkle" style="top:40px;right:14%;animation-delay:-1s">✧</div>
+  <div class="sparkle" style="bottom:20px;left:22%;animation-delay:-1.6s">✦</div>
+  <h1 class="logo">STARLIGHT<br>NET</h1>
+  <div class="tagline">✦ your gateway to the future, circa 2000 ✦</div>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#chat">Chatroom</a>
+  <a href="#guestbook">Guestbook</a>
+  <a href="#links">Links</a>
+</nav>
+
+<main>
+  <section class="window" id="home">
+    <div class="titlebar"><span>welcome.exe</span><span class="dots"><i></i><i></i><i></i></span></div>
+    <div class="body">
+      <div class="burst">NEW!<br>2000</div>
+      <h2>Hello, Traveler!</h2>
+      <p>Pull up a chair, dial up the modem, and explore a web that still believes in glitter, chrome and tiny blinking things.</p>
+      <p class="gif-text">★ UNDER CONSTRUCTION ★</p>
+      <a class="btn" href="#gallery">Enter the Gallery</a>
+    </div>
+  </section>
+
+  <section class="window" id="gallery">
+    <div class="titlebar"><span>gallery.zip</span><span class="dots"><i></i><i></i><i></i></span></div>
+    <div class="body">
+      <h2>Pixel Gallery</h2>
+      <ul class="stars">
+        <li>Chrome orb wallpaper vol. 1</li>
+        <li>Glitter cursor pack</li>
+        <li>Starburst button set</li>
+        <li>Retro blue-sky backgrounds</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="window" id="chat">
+    <div class="titlebar"><span>chat_room.exe</span><span class="dots"><i></i><i></i><i></i></span></div>
+    <div class="body">
+      <h2>Chatroom</h2>
+      <p><b>xX_stargirl_Xx:</b> anyone online?? 💿</p>
+      <p><b>neonpunk99:</b> brb, the phone line is busy lol</p>
+      <p><b>glitterbox:</b> new layout is SO cute</p>
+      <a class="btn" href="#chat">Join Room</a>
+    </div>
+  </section>
+
+  <section class="window" id="guestbook">
+    <div class="titlebar"><span>guestbook.txt</span><span class="dots"><i></i><i></i><i></i></span></div>
+    <div class="body">
+      <h2>Sign Here!</h2>
+      <p>"Your site is the coolest thing ever!!" — <i>moonchild</i></p>
+      <p>"Added you to my links page" — <i>pixelqueen</i></p>
+      <a class="btn" href="#guestbook">Sign Guestbook</a>
+    </div>
+  </section>
+
+  <section class="window" id="links">
+    <div class="titlebar"><span>favorites.url</span><span class="dots"><i></i><i></i><i></i></span></div>
+    <div class="body">
+      <h2>Cool Links</h2>
+      <ul class="stars">
+        <li>Webring: Stardust Ring</li>
+        <li>Free clip-art orchard</li>
+        <li>Midnight music player</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div class="rainbow"></div>
+
+<footer>
+  <div class="counter">004217</div>
+  <p>You are visitor number 4217! ✦ Best viewed in Netscape Navigator 4.0 at 800x600 ✦</p>
+  <span class="badge">HTML 4.01</span>
+  <span class="badge">100% CSS</span>
+  <span class="badge">NO ADS</span>
+  <p>© 2000 Starlight Net. All rights sparkle.</p>
+</footer>
+
+</body>
+</html>
